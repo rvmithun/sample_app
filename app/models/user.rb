@@ -7,7 +7,9 @@ before_create :create_remember_token
  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
- 
+ #attr_accessible :email, :password, :password_confirmation
+  #has_secure_password
+  #validates_presence_of :password, :on => :create
 has_secure_password
 before_save { email.downcase! }
   validates :password, length: { minimum: 6 }
